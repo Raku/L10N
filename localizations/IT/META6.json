@@ -1,0 +1,27 @@
+{
+  "auth": "zef:l10n",
+  "authors": [
+    "JJ Merelo"
+  ],
+  "build-depends": [
+  ],
+  "depends": [
+  ],
+  "description": "Italian localization of Raku",
+  "license": "Artistic-2.0",
+  "name": "L10N::IT",
+  "perl": "6.d",
+  "provides": {
+  },
+  "resources": [
+  ],
+  "source-url": "https://github.com/raku/L10N",
+  "tags": [
+    "LOCALIZATION",
+    "ITALIAN",
+    "IT"
+  ],
+  "test-depends": [
+  ],
+  "version": "0.0.1"
+}
