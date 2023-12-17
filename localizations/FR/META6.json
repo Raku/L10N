@@ -1,0 +1,27 @@
+{
+  "auth": "zef:l10n",
+  "authors": [
+    "Lucien Grondin"
+  ],
+  "build-depends": [
+  ],
+  "depends": [
+  ],
+  "description": "French localization of Raku",
+  "license": "Artistic-2.0",
+  "name": "L10N::FR",
+  "perl": "6.d",
+  "provides": {
+  },
+  "resources": [
+  ],
+  "source-url": "https://github.com/raku/L10N",
+  "tags": [
+    "LOCALIZATION",
+    "FRENCH",
+    "FR"
+  ],
+  "test-depends": [
+  ],
+  "version": "0.0.1"
+}
