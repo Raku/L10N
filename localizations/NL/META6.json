@@ -1,0 +1,27 @@
+{
+  "auth": "zef:l10n",
+  "authors": [
+    "Elizabeth Mattijsen"
+  ],
+  "build-depends": [
+  ],
+  "depends": [
+  ],
+  "description": "Dutch localization of Raku",
+  "license": "Artistic-2.0",
+  "name": "L10N::NL",
+  "perl": "6.d",
+  "provides": {
+  },
+  "resources": [
+  ],
+  "source-url": "https://github.com/raku/L10N",
+  "tags": [
+    "LOCALIZATION",
+    "DUTCH",
+    "NL"
+  ],
+  "test-depends": [
+  ],
+  "version": "0.0.1"
+}
