@@ -1,0 +1,14 @@
+use Test;
+plan 1;
+
+my $ast := Q:to/CODE/.AST("EN");
+my $a = 42;
+if $a == 42 {
+    say "The answer"
+}
+CODE
+$ast.EVAL;
+
+pass "Compiled and ran";
+
+# vim: expandtab shiftwidth=4
