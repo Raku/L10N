@@ -12,6 +12,8 @@
   "name": "L10N::IT",
   "perl": "6.d",
   "provides": {
+    "L10N::IT": "lib/L10N/IT.rakumod",
+    "RakuAST::Deparse::L10N::IT": "lib/RakuAST/Deparse/L10N/IT.rakumod"
   },
   "resources": [
   ],
