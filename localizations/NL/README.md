@@ -1,5 +1,3 @@
-[![Actions Status](https://github.com/Raku/L10N/actions/workflows/test.yml/badge.svg)](https://github.com/Raku/L10N/actions)
-
 NAME
 ====
 
