@@ -1,0 +1,27 @@
+{
+  "auth": "zef:l10n",
+  "authors": [
+    "Polgár Márton (Martin Burger)"
+  ],
+  "build-depends": [
+  ],
+  "depends": [
+  ],
+  "description": "Hungarian localization of Raku",
+  "license": "Artistic-2.0",
+  "name": "L10N::HU",
+  "perl": "6.d",
+  "provides": {
+  },
+  "resources": [
+  ],
+  "source-url": "https://github.com/raku/L10N",
+  "tags": [
+    "LOCALIZATION",
+    "HUNGARIAN",
+    "HU"
+  ],
+  "test-depends": [
+  ],
+  "version": "0.0.1"
+}
