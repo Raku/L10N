@@ -2,5 +2,8 @@ Revision history for L10N
 
 {{$NEXT}}
 
+0.0.2  2023-12-19T17:54:12+01:00
+    - Make sure we only run tests on upload
+
 0.0.1  2023-12-19T17:50:03+01:00
     - Initial version
