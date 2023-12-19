@@ -1,2 +1,4 @@
+.precomp/
 localizations/*/.precomp/
+localizations/*/lib/.precomp/
 localizations/*/releases/
