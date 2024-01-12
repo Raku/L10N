@@ -2,3 +2,4 @@
 
 use RakuAST::L10N;
 update-module("IT");
+"use lib '.'; use L10N::IT".EVAL;
