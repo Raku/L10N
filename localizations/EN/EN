@@ -1,7 +1,8 @@
 # This file contains that English "translation" of features of the
 # Raku Programming Language.
 #
-# See tools/build/L10N/README.md for more explanation.
+# See https://github.com/Raku/L10N/tree/main/localizations#readme
+# for more information.
 
 # KEY             TRANSLATION
 adverb-pc-delete  delete
