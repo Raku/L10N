@@ -7,11 +7,11 @@ SYNOPSIS
 ========
 
 ```raku
-use L10N::NL;
+use L10N::NL;           # or any other non-English localization
 zeg "Hallo wereld";
 {
-    gebruik L10N::EN;  # Note: -use- needs to be in outer localization
-    say "Hello World";
+    gebruik L10N::EN;   # Note: -use- is -gebruik- in L10N::NL
+    say "Hello World";  # now back to "normal" english syntax
 }
 ```
 
@@ -33,4 +33,3 @@ COPYRIGHT AND LICENSE
 Copyright 2023 Raku Localization Team
 
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
-

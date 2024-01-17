@@ -10,11 +10,11 @@ L10N::EN - English localization of Raku
 
 =begin code :lang<raku>
 
-use L10N::NL;
+use L10N::NL;           # or any other non-English localization
 zeg "Hallo wereld";
 {
-    gebruik L10N::EN;  # Note: -use- needs to be in outer localization
-    say "Hello World";
+    gebruik L10N::EN;   # Note: -use- is -gebruik- in L10N::NL
+    say "Hello World";  # now back to "normal" english syntax
 }
 
 =end code
