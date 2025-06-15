@@ -336,6 +336,7 @@ core-take           vesz
 core-take-rw        vesz-ío
 #core-tc             tc
 #core-tclc           tclc
+#core-temp           temp
 core-throws-like    dob-mint
 core-todo           teendő
 core-trans          fordít
@@ -373,6 +374,13 @@ core-words     szavak
 
 # KEY     TRANSLATION
 #core-zip  zip
+
+# KEY       TRANSLATION
+#enum-True   True
+#enum-False  False
+#enum-Less   Less
+#enum-Same   Same
+#enum-More   More
 
 # KEY             TRANSLATION
 infix-(cont)      (tartalmaz)

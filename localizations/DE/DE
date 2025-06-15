@@ -333,6 +333,7 @@ core-take           nim
 core-take-rw        nmm-rw
 #core-tc             tc
 #core-tclc           tclc
+#core-temp           temp
 core-throws-like    werft-wie
 core-todo           zumachen
 core-trans          übersetz
@@ -370,6 +371,13 @@ core-words     wörter
 
 # KEY     TRANSLATION
 core-zip  reißverschluss
+
+# KEY       TRANSLATION
+enum-True   Wahr
+enum-False  Falsch
+enum-Less   Weniger
+enum-Same   Dasselbe
+enum-More   Mehr
 
 # KEY             TRANSLATION
 infix-(cont)      (enthält)

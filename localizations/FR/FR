@@ -334,8 +334,9 @@ core-symlink      liensymb
 core-tail           queue
 core-take           prends
 core-take-rw        prends-le
-core-tc             tc
-core-tclc           tclc
+#core-tc             tc
+#core-tclc           tclc
+#core-temp           temp
 core-throws-like    jete-comme
 core-todo           àfaire
 #core-trans          trans
@@ -373,6 +374,13 @@ core-words     mots
 
 # KEY     TRANSLATION
 #core-zip  zip
+
+# KEY       TRANSLATION
+enum-True   Vrai
+enum-False  Faux
+enum-Less   Moins
+enum-Same   Même
+enum-More   Plue
 
 # KEY             TRANSLATION
 infix-(cont)      (cont)

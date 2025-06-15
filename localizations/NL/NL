@@ -333,6 +333,7 @@ core-take           neem
 core-take-rw        neem-rw
 core-tc             titel-kast
 core-tclc           titel-onder-kast
+core-temp           ad-interim
 core-throws-like    knalt-als
 core-todo           tedoen
 core-trans          vertaal
@@ -370,6 +371,13 @@ core-words     woorden
 
 # KEY     TRANSLATION
 core-zip  rits
+
+# KEY       TRANSLATION
+enum-True   Waar
+enum-False  Onjuist
+enum-Less   Minder
+enum-Same   Zelfde
+enum-More   Meer
 
 # KEY             TRANSLATION
 infix-(cont)      (bevat)

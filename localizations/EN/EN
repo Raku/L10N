@@ -334,6 +334,7 @@ core-take           take
 core-take-rw        take-rw
 core-tc             tc
 core-tclc           tclc
+core-temp           temp
 core-throws-like    throws-like
 core-todo           todo
 core-trans          trans
@@ -371,6 +372,13 @@ core-words     words
 
 # KEY     TRANSLATION
 core-zip  zip
+
+# KEY       TRANSLATION
+enum-True   True
+enum-False  False
+enum-Less   Less
+enum-Same   Same
+enum-More   More
 
 # KEY             TRANSLATION
 infix-(cont)      (cont)
