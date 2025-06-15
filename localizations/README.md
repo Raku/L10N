@@ -50,6 +50,9 @@ Sub/Method names that are part of the Raku core ("say", etc.)
 ## constraint
 Related to (ad-hoc) constraints ("where", etc.))
 
+## enum
+Related to system defined enums ("True","False","Less", etc.)
+
 ## infix
 Infix operators with alphanumeric chars ("eq","ne","cmp", etc.)
 

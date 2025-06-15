@@ -925,6 +925,9 @@ https://docs.raku.org/type/Test#sub_bail-out
 #### core-tclc
 - https://docs.raku.org/type/Str#routine_tclc
 
+#### core-temp
+- https://docs.raku.org/routine/temp
+
 #### core-throws-like
 - https://docs.raku.org/type/Test#sub_throws-like
 
@@ -1019,6 +1022,23 @@ https://docs.raku.org/type/Test#sub_bail-out
 
 #### core-zip
 - https://docs.raku.org/type/List#routine_zip
+
+## enum
+
+#### enum-True
+- https://docs.raku.org/type/Bool#index-entry-True
+
+#### enum-False
+- https://docs.raku.org/type/Bool#index-entry-False
+
+#### enum-Less
+- https://docs.raku.org/type/Order#index-entry-Less
+
+#### enum-Same
+- https://docs.raku.org/type/Order#index-entry-Same
+
+#### enum-More
+- https://docs.raku.org/type/Order#index-entry-More
 
 ## infix
 Infix operators consisting of alphanumeric characters
