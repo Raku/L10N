@@ -3,7 +3,7 @@
 NAME
 ====
 
-L10N - All official localizations of Raku
+L10N - All official localizations of Raku, approved by Coke.
 
 SYNOPSIS
 ========
