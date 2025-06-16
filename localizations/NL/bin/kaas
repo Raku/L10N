@@ -1,0 +1,7 @@
+#!/usr/bin/env raku
+
+%*ENV<RAKUDO_RAKUAST> = 1;
+%*ENV<RAKUDO_OPT>     = '-ML10N::NL';
+run $*EXECUTABLE, @*ARGS;
+
+# vim: expandtab shiftwidth=4

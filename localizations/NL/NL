@@ -372,13 +372,6 @@ core-words     woorden
 # KEY     TRANSLATION
 core-zip  rits
 
-# KEY       TRANSLATION
-enum-True   Waar
-enum-False  Onjuist
-enum-Less   Minder
-enum-Same   Zelfde
-enum-More   Meer
-
 # KEY             TRANSLATION
 infix-(cont)      (bevat)
 infix-(elem)      (element)
@@ -735,13 +728,21 @@ system-TWEAK        VERFIJN
 system-UPGRADE-RAT  VERBETER-RAT
 
 # KEY      TRANSLATION
-term-nano  nano
-term-now   nu
-term-pi    pi
-term-rand  willekeurig
-term-self  zelf
-term-tau   tau
-term-time  tijd
+term-Broken   Gebroken
+term-False    Onjuist
+term-Kept     Gehouden
+term-Less     Minder
+term-More     Meer
+term-nano     nano
+term-now      nu
+term-pi       pi
+term-Planned  Beloofd
+term-rand     willekeurig
+term-Same     Zelfde
+term-self     zelf
+term-tau      tau
+term-time     tijd
+term-True     Waar
 
 # KEY                           TRANSLATION
 #trait-is-built                  built
