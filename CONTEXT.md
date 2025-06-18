@@ -1025,20 +1025,44 @@ https://docs.raku.org/type/Test#sub_bail-out
 
 ## enum
 
-#### enum-True
-- https://docs.raku.org/type/Bool#index-entry-True
+#### enum-BigEndian
+- https://docs.raku.org/type/Endian
+
+#### enum-Broken
+- https://docs.raku.org/type/Promise
 
 #### enum-False
 - https://docs.raku.org/type/Bool#index-entry-False
 
+#### enum-FileChanged
+- https://docs.raku.org/type/IO/Notification
+
+#### enum-FileRenamed
+- https://docs.raku.org/type/IO/Notification
+
+#### enum-Kept
+- https://docs.raku.org/type/Promise
+
 #### enum-Less
 - https://docs.raku.org/type/Order#index-entry-Less
+
+#### enum-LittleEndian
+- https://docs.raku.org/type/Endian
+
+#### enum-More
+- https://docs.raku.org/type/Order#index-entry-More
+
+#### enum-NativeEndian
+- https://docs.raku.org/type/Endian
+
+#### enum-Planned
+- https://docs.raku.org/type/Promise
 
 #### enum-Same
 - https://docs.raku.org/type/Order#index-entry-Same
 
-#### enum-More
-- https://docs.raku.org/type/Order#index-entry-More
+#### enum-True
+- https://docs.raku.org/type/Bool#index-entry-True
 
 ## infix
 Infix operators consisting of alphanumeric characters

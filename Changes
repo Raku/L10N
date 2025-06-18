@@ -1,6 +1,10 @@
 Revision history for L10N
 
 {{$NEXT}}
+    - Update to new layout using separate repositories
+    - Update dependencies to latest/greatest
+    - Disable parsing tests for now
+    - Update copyright year
 
 0.0.2  2023-12-19T17:54:12+01:00
     - Make sure we only run tests on upload

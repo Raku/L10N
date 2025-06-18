@@ -1,5 +1,0 @@
-#!/usr/bin/env raku
-
-use RakuAST::L10N;
-update-module("FR");
-"use lib '.'; use L10N::FR".EVAL;

@@ -1,4 +1,2 @@
 .precomp/
-localizations/*/.precomp/
-localizations/*/lib/.precomp/
-localizations/*/releases/
+/L10N-*

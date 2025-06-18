@@ -6,20 +6,19 @@
   "build-depends": [
   ],
   "depends": [
-    "L10N::DE:ver<0.0.1>:auth<zef:l10n>",
-    "L10N::EN:ver<0.0.1>:auth<zef:l10n>",
-    "L10N::FR:ver<0.0.1>:auth<zef:l10n>",
-    "L10N::HU:ver<0.0.1>:auth<zef:l10n>",
-    "L10N::IT:ver<0.0.1>:auth<zef:l10n>",
-    "L10N::NL:ver<0.0.1>:auth<zef:l10n>",
-    "L10N::PT:ver<0.0.1>:auth<zef:l10n>"
+    "L10N::DE:ver<0.0.2+>:auth<zef:l10n>",
+    "L10N::EN:ver<0.0.3+>:auth<zef:l10n>",
+    "L10N::FR:ver<0.0.2+>:auth<zef:l10n>",
+    "L10N::HU:ver<0.0.2+>:auth<zef:l10n>",
+    "L10N::IT:ver<0.0.2+>:auth<zef:l10n>",
+    "L10N::NL:ver<0.0.3+>:auth<zef:l10n>",
+    "L10N::PT:ver<0.0.2+>:auth<zef:l10n>"
   ],
   "description": "All official localizations of Raku",
   "license": "Artistic-2.0",
   "name": "L10N",
   "perl": "6.d",
   "provides": {
-    "L10N": "lib/L10N.rakumod"
   },
   "resources": [
   ],
