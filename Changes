@@ -1,6 +1,8 @@
 Revision history for L10N
 
 {{$NEXT}}
+
+0.0.3  2025-06-18T17:14:03+02:00
     - Update to new layout using separate repositories
     - Update dependencies to latest/greatest
     - Disable parsing tests for now
