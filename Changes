@@ -2,6 +2,9 @@ Revision history for L10N
 
 {{$NEXT}}
 
+0.0.4  2025-06-24T13:51:11+02:00
+    - Add Welsh (CY) and Japanese (JA) localizations
+
 0.0.3  2025-06-18T17:14:03+02:00
     - Update to new layout using separate repositories
     - Update dependencies to latest/greatest
