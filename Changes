@@ -1,6 +1,8 @@
 Revision history for L10N
 
 {{$NEXT}}
+
+0.1.0  2025-06-27T18:21:30+02:00
     - Completely reworked the internals to become a module
       that supports the creation and maintenance of Raku
       localizations.  Please use L10N::Complete for the

@@ -20,6 +20,8 @@ DESCRIPTION
 
 The `L10N` distribution provides support logic for all official localizations of the Raku Programming Language. It exports a `L10N` class on which various class methods can be called.
 
+It also installs some helper scripts that help during the development and maintenance of localizations.
+
 RUNTIME METHODS
 ===============
 
@@ -206,6 +208,16 @@ say L10N.extensions-for-localization("NL");  # (kaas nedku)
 ```
 
 The filename extensions that are supported for a given localization in alphabetical order. Returns a `Failure` if the given localization is not supported.
+
+SCRIPTS
+=======
+
+update-localization
+-------------------
+
+    $ update-localization
+
+The `update-localization` script should be run after any changes have been made to the translations
 
 HISTORY
 =======
