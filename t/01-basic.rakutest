@@ -1,0 +1,30 @@
+use Test;
+use L10N;
+
+my @localizations = L10N.localizations.grep(* ne "EN");
+
+plan 3 + @localizations;
+
+ok @localizations,  'make sure we have any localizations';
+ok L10N.extensions, 'make sure we have any extensions';
+ok L10N.binaries,   'make sure we have any binaries';
+
+for @localizations -> $localization {
+    subtest "testing $localization localization" => {
+        my str @extensions = L10N.extensions-for-localization($localization);
+        my str @binaries   = L10N.binaries-for-localization($localization);
+
+        ok @extensions, 'do we have extensions';
+        ok @binaries,   'do we have binaries';
+
+        is L10N.localization-for-path("foo.@extensions[0]"), $localization,
+          "did we get the right localization for the path";
+
+        without L10N.role-for-localization($localization) -> $role {
+            isa-ok $role.HOW, Metamodel::ParametricRoleGroupHOW,
+              'did we actually get a role';
+        }
+    }
+}
+
+# vim: expandtab shiftwidth=4

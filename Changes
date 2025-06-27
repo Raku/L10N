@@ -1,6 +1,10 @@
 Revision history for L10N
 
 {{$NEXT}}
+    - Completely reworked the internals to become a module
+      that supports the creation and maintenance of Raku
+      localizations.  Please use L10N::Complete for the
+      previous logic (which will also install this distro)
 
 0.0.4  2025-06-24T13:51:11+02:00
     - Add Welsh (CY) and Japanese (JA) localizations

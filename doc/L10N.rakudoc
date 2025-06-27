@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-L10N - All official localizations of Raku
+L10N - support logic for all official localizations of Raku
 
 =head1 SYNOPSIS
 
@@ -10,14 +10,233 @@ L10N - All official localizations of Raku
 
 use L10N;
 
+say L10N.localization-for-path("foo.kaas");  # NL
+say L10N.role-for-localization("NL");  # (NL)
+
 =end code
 
 =head1 DESCRIPTION
 
-L10N is a distribution that, when installed, will install all official
-localizations of the Raku Programming Language as its dependencies.
+The C<L10N> distribution provides support logic for all official
+localizations of the Raku Programming Language.  It exports a
+C<L10N> class on which various class methods can be called.
 
-It will not install anything else.
+It also installs some helper scripts that help during the development
+and maintenance of localizations.
+
+=head1 RUNTIME METHODS
+
+These methods are intended to be used during normal runtime of a
+program.
+
+=head2 localization-for-path
+
+=begin code :lang<raku>
+say L10N.localization-for-path("foo.kaas");  # NL
+=end code
+
+Return the localization for a given path (or an C<IO::Path> object).
+Returns C<Nil> if no localization could be found for the given path.
+
+=head2 role-for-localization
+
+=begin code :lang<raku>
+say L10N.role-for-localization("NL");  # (NL)
+=end code
+
+Return the C<role> of the given localization (if it is installed),
+or C<True> if no localization could be found.
+
+Because grammars are type objects (and thus falsey), the value
+C<True> is returned to be able to easily distinguish the fail case.
+
+Alternately one could use e.g. the C<without> command:
+
+=begin code :lang<raku>
+.say without L10N.role-for-localization("NL");  # (NL)
+=end code
+
+=head1 SETUP METHODS
+
+These methods are intended to be used for setting up translations
+for a localization.
+
+=head2 fresh-translation
+
+=begin code :lang<raku>
+say L10N.fresh-translation("Xerxes"); # This file contains the Xerxes...
+=end code
+
+Returns the text of a fresh translation file for the given localization.
+
+=head2 fresh-translation-file
+
+=begin code :lang<raku>
+L10N.fresh-translation-file("XX", "Xerxes");
+say "XX.l10n".IO.e;  # True
+=end code
+
+Creates a fresh ".l10n" translation file with the given localization ID
+(usually a 2-letter ISO code) and name in the current directory.
+
+=head2 fresh-executor
+
+=begin code :lang<raku>
+say L10N.fresh-executor("XX"); # #!/usr/bin/env raku...
+=end code
+
+Returns the code of a fresh executor for the given localization.
+
+=head2 fresh-executor-file
+
+=begin code :lang<raku>
+L10N.fresh-executor-file("XX", "xerxes");
+say "bin/xerxes".IO.e;  # True
+=end code
+
+Creates a fresh executor file with the given localization ID
+(usually a 2-letter ISO code) and name of the executor to create.
+
+=head1 UPDATE METHODS
+
+=head2 read-hash
+
+Low-level method that converts a localization file into a hash for
+inspection and manipulation.
+
+=begin code :lang<raku>
+my %core     := L10N.read-hash();
+my %xlations := L10N.read-hash("XX.l10n");
+my %mixed    := L10N.read-hash("XX.l10n", :core);
+=end code
+
+The first optional input parameter is the path (or an IO object) of the
+localization file.  If not specified, the hash will be filled with the
+default (core) null-translation.
+
+If a path is specified, an optional C<:core> named parameter can be
+specified to fill in any missing translations with the default (core)
+null-translations.
+
+=head2 missing-translations
+
+=begin code :lang<raku>
+say L10N.missing-translations("XX.l10n").elems ~ " missing translations";
+=end code
+
+Given the path (or an IO object) of a localization file, returns a sorted
+list of translation keys that have not been translated yet.
+
+=head2 write-hash
+
+=begin code :lang<raku>
+L10N.write-hash("XX.l10n", %xlations);
+=end code
+
+Given the path (or an IO object) of a localization file, write the
+translations as found in the given hash to the file in the correct format,
+preserving any commented lines at the start of the file.
+
+=head2 slangify
+
+=begin code :lang<raku>
+my $ast := L10N.slangify("XX", %xlations);
+=end code
+
+Low-level method, mainly intended for internal purposes and debugging.
+Returns the AST of the C<role> that needs to be mixed into the Raku grammar
+to activate a localization, given a localization ID and translation hash.
+
+=head2 deparsify
+
+=begin code :lang<raku>
+my $ast := L10N.deparsify("XX", %xlations);
+=end code
+
+Low-level method, mainly intended for internal purposes and debugging.
+Returns the AST of the C<role> that needs to be mixed into the deparsing
+logic for a localization, given a localization ID and translation hash.
+
+=head2 update-localization-modules
+
+=begin code :lang<raku>
+L10N.update-localization-modules("XX.l10n");
+=end code
+
+Given the path (or an IO object) of a localization file, will create /
+update the Raku module source code of the localization, specifically
+C<lib/L10N/$id.rakumod> and C<lib/RakuAST/Deparse/L10N/$id.rakumod>).
+
+=head1 INFORMATIONAL METHODS
+
+These methods are provided purely for informational purposes, for
+instance in a pull down menu to select from.
+
+=head2 localizations
+
+=begin code :lang<raku>
+say L10N.localizations;  # (CY DE FR HU IT JA NL PT)
+=end code
+
+The localizations that are currently supported as 2-letter codes,
+in alphabetical order.
+
+=head2 extensions
+
+=begin code :lang<raku>
+say L10N.extensions;  # (churras denata deuku draig...
+=end code
+
+The filename extensions that are currently supported, in alphabetical
+order.
+
+=head2 binaries
+
+=begin code :lang<raku>
+say L10N.binaries;  # (churras denata deuku draig...
+=end code
+
+The binaries that are currently supported, in alphabetical order.
+
+=head2 binaries-for-localization
+
+=begin code :lang<raku>
+say L10N.binaries-for-localization("NL");  # (kaas nedku)
+=end code
+
+The binaries that are available for a given localization in alphabetical
+order.  Returns a C<Failure> if the given localization is not supported.
+
+=head2 extensions-for-localization
+
+=begin code :lang<raku>
+say L10N.extensions-for-localization("NL");  # (kaas nedku)
+=end code
+
+The filename extensions that are supported for a given localization in
+alphabetical order.  Returns a C<Failure> if the given localization is
+not supported.
+
+=head1 SCRIPTS
+
+=head2 update-localization
+
+=begin output
+$ update-localization
+=end output
+
+The C<update-localization> script should be run after any changes have
+been made to the translations
+
+=head1 HISTORY
+
+This distribution originally served as a meta-distribution, installing
+all official localizations of Raku only.  This function has now been
+taken over by the L<L10N::Complete|https://raku.land/zef:l10n/L10N::Complete>
+distribution, which will also install this distribution.
+
+The update methods were taken from the core C<RakuAST::L10N> module,
+which will be removed in the 2025.07 release of Rakudo.
 
 =head1 AUTHOR
 
@@ -30,3 +249,5 @@ Copyright 2023, 2025 Raku Localization Team
 This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
 
 =end pod
+
+# vim: expandtab shiftwidth=4

@@ -3,21 +3,216 @@
 NAME
 ====
 
-L10N - All official localizations of Raku
+L10N - support logic for all official localizations of Raku
 
 SYNOPSIS
 ========
 
 ```raku
 use L10N;
+
+say L10N.localization-for-path("foo.kaas");  # NL
+say L10N.role-for-localization("NL");  # (NL)
 ```
 
 DESCRIPTION
 ===========
 
-L10N is a distribution that, when installed, will install all official localizations of the Raku Programming Language as its dependencies.
+The `L10N` distribution provides support logic for all official localizations of the Raku Programming Language. It exports a `L10N` class on which various class methods can be called.
 
-It will not install anything else.
+RUNTIME METHODS
+===============
+
+These methods are intended to be used during normal runtime of a program.
+
+localization-for-path
+---------------------
+
+```raku
+say L10N.localization-for-path("foo.kaas");  # NL
+```
+
+Return the localization for a given path (or an `IO::Path` object). Returns `Nil` if no localization could be found for the given path.
+
+role-for-localization
+---------------------
+
+```raku
+say L10N.role-for-localization("NL");  # (NL)
+```
+
+Return the `role` of the given localization (if it is installed), or `True` if no localization could be found.
+
+Because grammars are type objects (and thus falsey), the value `True` is returned to be able to easily distinguish the fail case.
+
+Alternately one could use e.g. the `without` command:
+
+```raku
+.say without L10N.role-for-localization("NL");  # (NL)
+```
+
+SETUP METHODS
+=============
+
+These methods are intended to be used for setting up translations for a localization.
+
+fresh-translation
+-----------------
+
+```raku
+say L10N.fresh-translation("Xerxes"); # This file contains the Xerxes...
+```
+
+Returns the text of a fresh translation file for the given localization.
+
+fresh-translation-file
+----------------------
+
+```raku
+L10N.fresh-translation-file("XX", "Xerxes");
+say "XX.l10n".IO.e;  # True
+```
+
+Creates a fresh ".l10n" translation file with the given localization ID (usually a 2-letter ISO code) and name in the current directory.
+
+fresh-executor
+--------------
+
+```raku
+say L10N.fresh-executor("XX"); # #!/usr/bin/env raku...
+```
+
+Returns the code of a fresh executor for the given localization.
+
+fresh-executor-file
+-------------------
+
+```raku
+L10N.fresh-executor-file("XX", "xerxes");
+say "bin/xerxes".IO.e;  # True
+```
+
+Creates a fresh executor file with the given localization ID (usually a 2-letter ISO code) and name of the executor to create.
+
+UPDATE METHODS
+==============
+
+read-hash
+---------
+
+Low-level method that converts a localization file into a hash for inspection and manipulation.
+
+```raku
+my %core     := L10N.read-hash();
+my %xlations := L10N.read-hash("XX.l10n");
+my %mixed    := L10N.read-hash("XX.l10n", :core);
+```
+
+The first optional input parameter is the path (or an IO object) of the localization file. If not specified, the hash will be filled with the default (core) null-translation.
+
+If a path is specified, an optional `:core` named parameter can be specified to fill in any missing translations with the default (core) null-translations.
+
+missing-translations
+--------------------
+
+```raku
+say L10N.missing-translations("XX.l10n").elems ~ " missing translations";
+```
+
+Given the path (or an IO object) of a localization file, returns a sorted list of translation keys that have not been translated yet.
+
+write-hash
+----------
+
+```raku
+L10N.write-hash("XX.l10n", %xlations);
+```
+
+Given the path (or an IO object) of a localization file, write the translations as found in the given hash to the file in the correct format, preserving any commented lines at the start of the file.
+
+slangify
+--------
+
+```raku
+my $ast := L10N.slangify("XX", %xlations);
+```
+
+Low-level method, mainly intended for internal purposes and debugging. Returns the AST of the `role` that needs to be mixed into the Raku grammar to activate a localization, given a localization ID and translation hash.
+
+deparsify
+---------
+
+```raku
+my $ast := L10N.deparsify("XX", %xlations);
+```
+
+Low-level method, mainly intended for internal purposes and debugging. Returns the AST of the `role` that needs to be mixed into the deparsing logic for a localization, given a localization ID and translation hash.
+
+update-localization-modules
+---------------------------
+
+```raku
+L10N.update-localization-modules("XX.l10n");
+```
+
+Given the path (or an IO object) of a localization file, will create / update the Raku module source code of the localization, specifically `lib/L10N/$id.rakumod` and `lib/RakuAST/Deparse/L10N/$id.rakumod`).
+
+INFORMATIONAL METHODS
+=====================
+
+These methods are provided purely for informational purposes, for instance in a pull down menu to select from.
+
+localizations
+-------------
+
+```raku
+say L10N.localizations;  # (CY DE FR HU IT JA NL PT)
+```
+
+The localizations that are currently supported as 2-letter codes, in alphabetical order.
+
+extensions
+----------
+
+```raku
+say L10N.extensions;  # (churras denata deuku draig...
+```
+
+The filename extensions that are currently supported, in alphabetical order.
+
+binaries
+--------
+
+```raku
+say L10N.binaries;  # (churras denata deuku draig...
+```
+
+The binaries that are currently supported, in alphabetical order.
+
+binaries-for-localization
+-------------------------
+
+```raku
+say L10N.binaries-for-localization("NL");  # (kaas nedku)
+```
+
+The binaries that are available for a given localization in alphabetical order. Returns a `Failure` if the given localization is not supported.
+
+extensions-for-localization
+---------------------------
+
+```raku
+say L10N.extensions-for-localization("NL");  # (kaas nedku)
+```
+
+The filename extensions that are supported for a given localization in alphabetical order. Returns a `Failure` if the given localization is not supported.
+
+HISTORY
+=======
+
+This distribution originally served as a meta-distribution, installing all official localizations of Raku only. This function has now been taken over by the [L10N::Complete](https://raku.land/zef:l10n/L10N::Complete) distribution, which will also install this distribution.
+
+The update methods were taken from the core `RakuAST::L10N` module, which will be removed in the 2025.07 release of Rakudo.
 
 AUTHOR
 ======

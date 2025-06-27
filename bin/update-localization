@@ -1,0 +1,13 @@
+#!/usr/bin/env raku
+
+use L10N;
+
+my $extension := L10N.extension;
+for dir.grep(*.extension eq $extension) -> $io {
+    L10N.update-localization-modules($io);
+
+    # precomp the module to be sure it worked
+    "use lib '.'; use L10N::$io.basename.subst(qq/.$extension/)".EVAL;
+}
+
+# vim: expandtab shiftwidth=4
