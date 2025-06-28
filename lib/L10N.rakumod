@@ -20,6 +20,11 @@ my sub io2words(IO::Path:D $io) {
     $io.lines.map: { .words.Slip unless .starts-with("#") }
 }
 
+# Create default name of executor from a language
+my sub language2executor(Str:D $language --> Str:D) {
+    "$language.lc.substr(0,3)ku"
+}
+
 #- AST BUILDING LOGIC ----------------------------------------------------------
 # These subs create ASTs, or help in creating them
 
@@ -356,6 +361,90 @@ method localization-for-path(IO(Str:D) $io) {
 }
 
 #- SETUP METHODS ---------------------------------------------------------------
+method fresh-distribution(
+  IO()      $dir,
+  Str:D     $language,
+  Str:D    :$auth         = "zef:l10n",
+  Str:D    :$author       = $*USER.tclc,
+  Str:D    :$copyright    = "Raku Localization Team",
+  Str:D    :$email        = "l10n@raku.org",
+  Str:D    :$executor     = language2executor($language),
+  Str:D    :$localization = $dir.basename,
+  Str(Int) :$year         = DateTime.now.year,
+) {
+    die "Can only create a fresh distribution in a new directory"
+      if $dir.d && $dir.dir.elems;
+
+    # Slurp a file from resources, and do the necessary substitutions
+    my sub slurp(Str:D $key) {
+        with %?RESOURCES{$key} -> $handle {
+            $handle.open.slurp(:close)
+              .subst("#AUTHOR#",       $author,       :g)
+              .subst("#LANGUAGE#",     $language,     :g)
+              .subst("#LOCALIZATION#", $localization, :g)
+              .subst("#AUTH#",         $auth,         :g)
+              .subst("#EMAIL#",        $email,        :g)
+              .subst("#COPYRIGHT#",    $copyright,    :g)
+              .subst("#EXECUTOR#",     $executor,     :g)
+              .subst("#YEAR#",         $year,         :g)
+        }
+        else {
+            die "'$key' does not appear to be a resource";
+        }
+    }
+
+    # Create a file from the resources
+    my sub spurt(Str:D $key, $io = $dir) {
+        $io.add($key).spurt(slurp $key)
+    }
+
+    # Run a script in the given directory
+    my sub run-script($script, *@args) {
+        indir $dir, {
+            my $proc := run $script, @args;
+            $proc.exitcode
+              ?? die $!
+              !! True
+        }
+    }
+
+    # Make sure there *is* a directory to write files to
+    $dir.mkdir;
+
+    # Files with same name in root directory
+    spurt($_) for <Changes dist.ini .gitignore LICENSE META6.json run-tests>;
+
+    # Add test file
+    my $t := $dir.add("t");
+    $t.mkdir;
+    spurt('01-basic.rakutest', $t);
+
+    # Add CI runners
+    my $workflows := $dir.add(<.github workflows>);
+    $workflows.mkdir;
+    spurt("$_.yml", $workflows) for <linux macos windows>;
+
+    # Add the documentation file
+    my $doc := $dir.add("doc");
+    $doc.mkdir;
+    $doc.add("L10N-$localization.rakudoc").spurt(slurp "L10N.rakudoc");
+
+    # Add a translation file to work with
+    self.fresh-translation-file($localization, $language, $dir);
+
+    # Add a fresh executor file
+    self.fresh-executor-file($localization, $language, $executor, $dir);
+
+    # Make sure we have source files and README.md
+    run-script "update-localization";
+    run-script "mi6", "build";
+
+    # Prepare for use with git
+    run-script "git", "init";
+    run-script "git", <add .>;
+    run-script "git", <<commit -a "-mInitial commit from L10N.fresh-distribution">>
+}
+
 method fresh-translation(Str:D $name) {
     my str @lines = %?RESOURCES<NULL-TRANSLATION>.open.lines(:close).map: {
         if .starts-with("#") {
@@ -384,8 +473,7 @@ method fresh-translation-file(
     $dir.add("$id.$extension").spurt(self.fresh-translation($name))
 }
 
-method fresh-executor(Str:D $id) {
-    my $language := %localization2language{$id} // "………";
+method fresh-executor(Str:D $id, Str:D $language) {
     qq:to/CODE/
 #!/usr/bin/env raku
 
@@ -403,12 +491,13 @@ CODE
 
 method fresh-executor-file(
   Str:D   $id,
-  Str:D   $name,
+  Str:D   $language,
+  Str:D   $name = language2executor($language),
   IO(Str) $dir  = "."
 ) {
     my $bin := $dir.add("bin");
     $bin.mkdir;
-    $bin.add($name).spurt(self.fresh-executor($id))
+    $bin.add($name).spurt(self.fresh-executor($id, $language))
 }
 
 #- UPDATE METHODS --------------------------------------------------------------

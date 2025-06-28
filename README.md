@@ -58,6 +58,26 @@ SETUP METHODS
 
 These methods are intended to be used for setting up translations for a localization.
 
+fresh-distribution
+------------------
+
+```raku
+say L10N.fresh-distribution("XX", "Xerxes");
+```
+
+Creates a fresh distribution for a localization in the given directory name (which can also be an IO object for a non-existing, or empty directory) and language name. It also accepts the following named arguments:
+
+<table class="pod-table">
+<thead><tr>
+<th>name</th> <th>default</th>
+</tr></thead>
+<tbody>
+<tr> <td>auth</td> <td>zef:l10n</td> </tr> <tr> <td>author</td> <td>$*USER.tclc</td> </tr> <tr> <td>copyright</td> <td>Raku Localization Team</td> </tr> <tr> <td>email</td> <td>l10n@raku.org</td> </tr> <tr> <td>executor</td> <td>first 3 characters of language lowercased, followed by &quot;ku&quot;</td> </tr> <tr> <td>localization</td> <td>basename of the directory specified</td> </tr> <tr> <td>year</td> <td>current year</td> </tr>
+</tbody>
+</table>
+
+Returns `True` if successful. Expects "git" and `App::Mi6` to be installed.
+
 fresh-translation
 -----------------
 
@@ -81,20 +101,20 @@ fresh-executor
 --------------
 
 ```raku
-say L10N.fresh-executor("XX"); # #!/usr/bin/env raku...
+say L10N.fresh-executor("XX", "Xerxes"); # #!/usr/bin/env raku...
 ```
 
-Returns the code of a fresh executor for the given localization.
+Returns the code of a fresh executor for the given localization and language name (in English).
 
 fresh-executor-file
 -------------------
 
 ```raku
-L10N.fresh-executor-file("XX", "xerxes");
-say "bin/xerxes".IO.e;  # True
+L10N.fresh-executor-file("XX", "XerXes");
+say "bin/xerku".IO.e;  # True
 ```
 
-Creates a fresh executor file with the given localization ID (usually a 2-letter ISO code) and name of the executor to create.
+Creates a fresh executor file with the given localization ID (usually a 2-letter ISO code), the name of the language (in English), and an optional name of the executor to create (defaults to the first 3 letters of the language lowercased, followed by "ku").
 
 UPDATE METHODS
 ==============
@@ -211,6 +231,24 @@ The filename extensions that are supported for a given localization in alphabeti
 
 SCRIPTS
 =======
+
+new-localization
+----------------
+
+    $ new-localization XX Xerxes
+
+Create a directory with the given first argument for a new localization with the same name, and use the second argument as the name of the language (in English).
+
+Takes these named arguments, with these default values:
+
+<table class="pod-table">
+<thead><tr>
+<th>argument</th> <th>default</th>
+</tr></thead>
+<tbody>
+<tr> <td>--auth</td> <td>zef:l10n</td> </tr> <tr> <td>--author</td> <td>$*USER.tclc</td> </tr> <tr> <td>--copyright</td> <td>Raku Localization Team</td> </tr> <tr> <td>--email</td> <td>l10n@raku.org</td> </tr> <tr> <td>--executor</td> <td>first 3 characters of language lowercased, followed by &quot;ku&quot;</td> </tr> <tr> <td>--localization</td> <td>basename of the directory specified</td> </tr> <tr> <td>--year</td> <td>current year</td> </tr>
+</tbody>
+</table>
 
 update-localization
 -------------------

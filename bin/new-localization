@@ -1,0 +1,11 @@
+#!/usr/bin/env raku
+
+use L10N;
+
+my %*SUB-MAIN-OPTS = :named-anywhere;
+
+sub MAIN($localization, $language, *%_) {
+    L10N.fresh-distribution($localization, $language)
+}
+
+# vim: expandtab shiftwidth=4

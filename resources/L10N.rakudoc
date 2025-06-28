@@ -1,0 +1,40 @@
+=begin pod
+
+=head1 NAME
+
+L10N::#LOCALIZATION# - #LANGUAGE# localization of Raku
+
+=head1 SYNOPSIS
+
+=begin output
+$ #EXECUTOR# -e '' # please add a simple code example in the #LOCALIZATION# localization
+=end output
+
+=begin code :lang<raku>
+
+use L10N::#LOCALIZATION#;
+# please add a code example in the #LOCALIZATION# localization
+
+=end code
+
+=head1 DESCRIPTION
+
+The C<L10N::#LOCALIZATION#> distribution contains the logic to provide a #LANGUAGE#
+localization of the Raku Programming Language.  It installs a
+C<#EXECUTOR#> executable that will automatically activate the #LANGUAGE#
+localization.  And it allows one to use the #LANGUAGE# localization
+in selected programs with a C<use L10N::#LOCALIZATION#> statement.
+
+=head1 AUTHORS
+
+#AUTHOR# <#EMAIL#>
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright #YEAR# #COPYRIGHT#
+
+This library is free software; you can redistribute it and/or modify it under the Artistic License 2.0.
+
+=end pod
+
+# vim: expandtab shiftwidth=4

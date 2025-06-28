@@ -1,6 +1,12 @@
 Revision history for L10N
 
 {{$NEXT}}
+    - Add support for "fresh-distribution" method to
+      completely set up a repository for a new language
+      localization
+    - Reworked the interface of some other setup methods
+    - Added a "new-localization" script to create a new
+      localization, using the "fresh-distribution" logic
 
 0.1.0  2025-06-27T18:21:30+02:00
     - Completely reworked the internals to become a module

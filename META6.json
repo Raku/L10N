@@ -15,7 +15,18 @@
     "L10N": "lib/L10N.rakumod"
   },
   "resources": [
-    "NULL-TRANSLATION"
+    "01-basic.rakutest",
+    "Changes",
+    ".gitignore",
+    "LICENSE",
+    "L10N.rakudoc",
+    "META6.json",
+    "NULL-TRANSLATION",
+    "dist.ini",
+    "linux.yml",
+    "macos.yml",
+    "run-tests",
+    "windows.yml"
   ],
   "source-url": "https://github.com/Raku-L10N/L10N.git",
   "tags": [
@@ -23,5 +34,5 @@
   ],
   "test-depends": [
   ],
-  "version": "0.1.0"
+  "version": "0.1.1"
 }

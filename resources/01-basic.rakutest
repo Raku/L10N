@@ -1,0 +1,11 @@
+use Test;
+plan 1;
+
+my $ast := Q:to/CODE/.AST("#LOCALIZATION#");
+# please fill in a code example in the #LOCALIZATION# localization
+CODE
+$ast.EVAL;
+
+pass "Compiled and ran";
+
+# vim: expandtab shiftwidth=4

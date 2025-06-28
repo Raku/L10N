@@ -61,6 +61,31 @@ Alternately one could use e.g. the C<without> command:
 These methods are intended to be used for setting up translations
 for a localization.
 
+=head2 fresh-distribution
+
+=begin code :lang<raku>
+say L10N.fresh-distribution("XX", "Xerxes");
+=end code
+
+Creates a fresh distribution for a localization in the given directory
+name (which can also be an IO object for a non-existing, or empty
+directory) and language name.  It also accepts the following named
+arguments:
+
+=table
+name         | default
+-------------|--------
+auth         | zef:l10n
+author       | $*USER.tclc
+copyright    | Raku Localization Team
+email        | l10n@raku.org
+executor     | first 3 characters of language lowercased, followed by "ku"
+localization | basename of the directory specified
+year         | current year
+
+Returns C<True> if successful.  Expects "git" and C<App::Mi6> to be
+installed.
+
 =head2 fresh-translation
 
 =begin code :lang<raku>
@@ -82,20 +107,23 @@ Creates a fresh ".l10n" translation file with the given localization ID
 =head2 fresh-executor
 
 =begin code :lang<raku>
-say L10N.fresh-executor("XX"); # #!/usr/bin/env raku...
+say L10N.fresh-executor("XX", "Xerxes"); # #!/usr/bin/env raku...
 =end code
 
-Returns the code of a fresh executor for the given localization.
+Returns the code of a fresh executor for the given localization and
+language name (in English).
 
 =head2 fresh-executor-file
 
 =begin code :lang<raku>
-L10N.fresh-executor-file("XX", "xerxes");
-say "bin/xerxes".IO.e;  # True
+L10N.fresh-executor-file("XX", "XerXes");
+say "bin/xerku".IO.e;  # True
 =end code
 
 Creates a fresh executor file with the given localization ID
-(usually a 2-letter ISO code) and name of the executor to create.
+(usually a 2-letter ISO code), the name of the language (in English),
+and an optional name of the executor to create (defaults to the first
+3 letters of the language lowercased, followed by "ku").
 
 =head1 UPDATE METHODS
 
@@ -218,6 +246,29 @@ alphabetical order.  Returns a C<Failure> if the given localization is
 not supported.
 
 =head1 SCRIPTS
+
+=head2 new-localization
+
+=begin output
+$ new-localization XX Xerxes
+=end output
+
+Create a directory with the given first argument for a new localization
+with the same name, and use the second argument as the name of the language
+(in English).
+
+Takes these named arguments, with these default values:
+
+=table
+argument       | default
+---------------|--------
+--auth         | zef:l10n
+--author       | $*USER.tclc
+--copyright    | Raku Localization Team
+--email        | l10n@raku.org
+--executor     | first 3 characters of language lowercased, followed by "ku"
+--localization | basename of the directory specified
+--year         | current year
 
 =head2 update-localization
 

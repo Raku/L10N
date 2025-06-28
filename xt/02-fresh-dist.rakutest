@@ -1,0 +1,11 @@
+use Test;
+use L10N;
+
+plan 1;
+
+indir $*PROGRAM.parent, {
+    ok L10N.fresh-distribution("XX", "XerXes");
+    LEAVE run <rm -rf XX>;
+}
+
+# vim: expandtab shiftwidth=4

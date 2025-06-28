@@ -1,0 +1,26 @@
+{
+  "auth": "#AUTH#",
+  "authors": [
+    "#AUTHOR#"
+  ],
+  "build-depends": [
+  ],
+  "depends": [
+  ],
+  "description": "#LANGUAGE# localization of Raku",
+  "license": "Artistic-2.0",
+  "name": "L10N::#LOCALIZATION#",
+  "perl": "6.d",
+  "provides": {
+    "L10N::#LOCALIZATION#": "lib/L10N/#LOCALIZATION#.rakumod",
+    "RakuAST::Deparse::L10N::#LOCALIZATION#": "lib/RakuAST/Deparse/L10N/#LOCALIZATION#.rakumod"
+  },
+  "resources": [
+  ],
+  "tags": [
+    "LOCALIZATION", "#LANGUAGE#"
+  ],
+  "test-depends": [
+  ],
+  "version": "0.0.1"
+}
