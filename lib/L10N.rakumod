@@ -438,13 +438,13 @@ method fresh-distribution(
     # Make sure we have source files
     self.update-localization-modules($dir.add("$localization.$extension"));
 
-    # Make sure we have a README.md
-    run-script "mi6", "build";
-
     # Prepare for use with git
     run-script "git", "init";
     run-script "git", <add .>;
-    run-script "git", <<commit -a "-mInitial commit from L10N.fresh-distribution">>
+    run-script "git", <<commit -a "-mInitial commit from L10N.fresh-distribution">>;
+
+    # Make sure we have a README.md
+    run-script "mi6", "build"
 }
 
 method fresh-translation(Str:D $name) {

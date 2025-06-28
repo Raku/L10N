@@ -2,6 +2,11 @@ Revision history for L10N
 
 {{$NEXT}}
 
+0.1.2  2025-06-28T21:55:08+02:00
+    - In .fresh-distribution: README.md generation must
+      be done *after* we've initialized as a git repo,
+      NOT before!
+
 0.1.1  2025-06-28T15:09:49+02:00
     - Add support for "fresh-distribution" method to
       completely set up a repository for a new language
