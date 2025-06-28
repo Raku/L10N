@@ -5,7 +5,7 @@ use L10N;
 my %*SUB-MAIN-OPTS = :named-anywhere;
 
 sub MAIN($localization, $language, *%_) {
-    L10N.fresh-distribution($localization, $language)
+    L10N.fresh-distribution($localization.uc, $language)
 }
 
 # vim: expandtab shiftwidth=4

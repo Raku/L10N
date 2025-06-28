@@ -2,6 +2,10 @@ Revision history for L10N
 
 {{$NEXT}}
 
+0.1.3  2025-06-28T22:36:03+02:00
+    - Make sure that README.md is included in the initial
+      commit
+
 0.1.2  2025-06-28T21:55:08+02:00
     - In .fresh-distribution: README.md generation must
       be done *after* we've initialized as a git repo,

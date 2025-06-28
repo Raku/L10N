@@ -440,11 +440,13 @@ method fresh-distribution(
 
     # Prepare for use with git
     run-script "git", "init";
-    run-script "git", <add .>;
-    run-script "git", <<commit -a "-mInitial commit from L10N.fresh-distribution">>;
 
     # Make sure we have a README.md
-    run-script "mi6", "build"
+    run-script "mi6", "build";
+
+    # Create the first commit
+    run-script "git", <add .>;
+    run-script "git", <<commit -a "-mInitial commit from L10N.fresh-distribution">>
 }
 
 method fresh-translation(Str:D $name) {
