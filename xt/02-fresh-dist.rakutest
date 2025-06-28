@@ -4,7 +4,8 @@ use L10N;
 plan 1;
 
 indir $*PROGRAM.parent, {
-    ok L10N.fresh-distribution("XX", "XerXes");
+    ok L10N.fresh-distribution("XX", "XerXes"),
+      "Was able to create a fresh distribution for XX";
     LEAVE run <rm -rf XX>;
 }
 

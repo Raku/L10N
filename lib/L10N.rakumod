@@ -435,8 +435,10 @@ method fresh-distribution(
     # Add a fresh executor file
     self.fresh-executor-file($localization, $language, $executor, $dir);
 
-    # Make sure we have source files and README.md
-    run-script "update-localization";
+    # Make sure we have source files
+    self.update-localization-modules($dir.add("$localization.$extension"));
+
+    # Make sure we have a README.md
     run-script "mi6", "build";
 
     # Prepare for use with git
