@@ -444,8 +444,13 @@ method fresh-distribution(
     # Make sure we have a README.md
     run-script "mi6", "build";
 
-    # Create the first commit
+    # Add all files
     run-script "git", <add .>;
+
+    # Make sure lib files are updated in META6.json
+    run-script "mi6", "build";
+
+    # Create the first commit
     run-script "git", <<commit -a "-mInitial commit from L10N.fresh-distribution">>
 }
 
