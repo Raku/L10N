@@ -962,9 +962,30 @@ method binaries-for-localization(Str:D $localization) {
       // unknown($localization)
 }
 
+my @translation-keys;
+method translation-keys() {
+    @translation-keys
+      ?? @translation-keys
+      !! (@translation-keys := self!core.map(-> $key,$ { $key }).List)
+}
+
+my %translation-key-info;
+method info-for-translation-key(Str:D $key) {
+    unless %translation-key-info {
+        my %hash;
+        for %?RESOURCES<CONTEXT.md>.open.slurp(:close).split("\n\n") {
+            my ($key,$text) = .split("\n",2);
+            %hash{$key.subst(/^ "#"+ " "+ /)} := $text;
+        }
+        %translation-key-info := %hash;
+    }
+    %translation-key-info{$key} // Nil
+}
+
 method extension()     { $extension     }
 method localizations() { @localizations }
 method extensions()    { @extensions    }
 method binaries()      { @binaries      }
+
 
 # vim: expandtab shiftwidth=4

@@ -1,6 +1,8 @@
 Revision history for L10N
 
 {{$NEXT}}
+    - Add "translation-keys" and "info-for-translation-key"
+      informational methods
 
 0.1.4  2025-06-29T11:38:58+02:00
     - Make sure that META6.json includes the lib files

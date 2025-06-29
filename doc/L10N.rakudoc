@@ -245,6 +245,25 @@ The filename extensions that are supported for a given localization in
 alphabetical order.  Returns a C<Failure> if the given localization is
 not supported.
 
+=head2 translation-keys
+
+=begin code :lang<raku>
+say L10N.translation-keys;   # (adverb-pc-delete adverb-pc-exists ...
+say +L10N.translation-keys;  # 643
+=end code
+
+Returns an alphabetically sorted list of translation keys, or can be used
+to find out the number of translation keys available.
+
+=head2 info-for-translation-key
+
+=begin code :lang<raku>
+say L10N.info-for-translation-key("block-for");
+# - https://docs.raku.org/language/control#for
+=end code
+
+Returns any extra information available for a translation key, usually a URL to the Raku documentation.
+
 =head1 SCRIPTS
 
 =head2 new-localization

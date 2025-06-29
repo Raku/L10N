@@ -1,5 +1,4 @@
 # Translation context
-
 As it is hard for translators to have a mental image of what the translation of a given item should be, this file contains a list of all of the translatable items with one or more URLs where that feature is being documented.
 
 ## adverb-pc
@@ -26,6 +25,7 @@ Adverbs on post(circummfix) operators, e.g. `%hash<foo>:delete>`.
 - https://docs.raku.org/language/subscripts#:v
 
 ## adverb-q
+Adverbs on quoting constructs, e.g. `Q:array/@a[42]/`.
 
 #### adverb-q-a
 - https://docs.raku.org/language/quoting#Literal_strings:_Q
@@ -1024,6 +1024,7 @@ https://docs.raku.org/type/Test#sub_bail-out
 - https://docs.raku.org/type/List#routine_zip
 
 ## enum
+Core enumerated values, such as True, False, Less, More, etc.
 
 #### enum-BigEndian
 - https://docs.raku.org/type/Endian
@@ -1233,7 +1234,7 @@ Statement modifier syntax
 - https://docs.raku.org/syntax/without
 
 ## multi
-Types of multi syntax
+Types of multi syntax: proto, multi, only
 
 #### multi-multi
 - https://docs.raku.org/language/functions#Multi-dispatch
@@ -1701,6 +1702,7 @@ https://docs.raku.org/type/List#routine_grep
 - https://docs.raku.org/type/Date#method_new
 
 ## package
+Namespace indicators, such as "class", "role", "grammar", etc.
 
 #### package-class
 - https://docs.raku.org/language/objects#Classes
@@ -1718,6 +1720,7 @@ https://docs.raku.org/type/List#routine_grep
 - https://docs.raku.org/language/objects#Roles
 
 ## phaser
+Named statements / blocks that are executed by the system at certain times within certain contexts.
 
 #### phaser-BEGIN
 - https://docs.raku.org/language/phasers#BEGIN
@@ -1774,6 +1777,7 @@ https://docs.raku.org/type/List#routine_grep
 - https://docs.raku.org/language/phasers#UNDO
 
 ## pragma
+Pragmas to activate / deactivate with "use" and "no".
 
 #### pragma-dynamic-scope
 - https://docs.raku.org/language/pragmas#dynamic-scope
@@ -1824,6 +1828,7 @@ https://docs.raku.org/type/List#routine_grep
 - https://docs.raku.org/language/pragmas#worries
 
 ## prefix
+Prefix operators with alphabetical characters.
 
 #### not
 - https://docs.raku.org/language/operators#prefix_not
@@ -1832,6 +1837,7 @@ https://docs.raku.org/type/List#routine_grep
 - https://docs.raku.org/language/operators#prefix_so
 
 ## quote-lang
+Identifiers for quote lang constructs, such as Q//, q//, qq// etc.
 
 #### quote-lang-m
 - https://docs.raku.org/language/regexes#Match_syntax
@@ -1864,6 +1870,7 @@ https://docs.raku.org/type/List#routine_grep
 - https://docs.raku.org/language/regexes#S///_non-destructive_substitution
 
 ## routine
+Types of named code blocks, such as "sub", "method", etc.
 
 #### routine-method
 - https://docs.raku.org/language/syntax#Method_declaration
@@ -1884,6 +1891,7 @@ https://docs.raku.org/type/List#routine_grep
 - https://docs.raku.org/language/grammars#Named_Regexes
 
 ## scope
+Types of scopes supported, such as "my", "our", "has", etc.
 
 #### scope-anon
 - https://docs.raku.org/language/variables#The_anon_declarator
@@ -1913,6 +1921,7 @@ https://docs.raku.org/type/List#routine_grep
 - https://docs.raku.org/language/syntax#Package,_Module,_Class,_Role,_and_Grammar_declaration
 
 ## stmt-prefix
+Identifiers that can be put before a statement to influence the semantics of that statement.
 
 #### stmt-prefix-also
 - https://docs.raku.org/language/classtut#The_also_declarator
@@ -1954,6 +1963,7 @@ https://docs.raku.org/type/List#routine_grep
 - https://docs.raku.org/language/statement-prefixes#try
 
 ## system
+Names of methods that are called by the system at certain points in time / contexts.
 
 #### system-ACCEPTS
 - https://docs.raku.org/routine/ACCEPTS#type/Muroutinemethod
@@ -1980,6 +1990,7 @@ https://docs.raku.org/type/List#routine_grep
 - https://docs.raku.org/language/variables#$*RAT-OVERFLOW
 
 ## term
+Core terms in Raku, such as "self", "time", "pi", etc.
 
 #### term-nano
 - https://docs.raku.org/language/terms#term_nano
@@ -2003,6 +2014,8 @@ https://docs.raku.org/type/List#routine_grep
 - https://docs.raku.org/language/terms#term_time
 
 ## trait-is
+
+Traits using the "is" identifier.
 
 #### trait-is-built
 - https://docs.raku.org/type/Attribute#trait_is_built
@@ -2078,6 +2091,7 @@ https://docs.raku.org/type/List#routine_grep
 - https://docs.raku.org/language/typesystem#trait_trusts
 
 ## typer
+Special Raku constructs for creating types.
 
 #### typer-enum
 - https://docs.raku.org/language/enumeration
@@ -2086,6 +2100,8 @@ https://docs.raku.org/type/List#routine_grep
 - https://docs.raku.org/language/typesystem#subset
 
 ## use
+
+Raku constructs to load external modules and activate pragmas.
 
 #### use-import
 - https://docs.raku.org/language/modules#use

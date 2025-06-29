@@ -229,6 +229,26 @@ say L10N.extensions-for-localization("NL");  # (kaas nedku)
 
 The filename extensions that are supported for a given localization in alphabetical order. Returns a `Failure` if the given localization is not supported.
 
+translation-keys
+----------------
+
+```raku
+say L10N.translation-keys;   # (adverb-pc-delete adverb-pc-exists ...
+say +L10N.translation-keys;  # 643
+```
+
+Returns an alphabetically sorted list of translation keys, or can be used to find out the number of translation keys available.
+
+info-for-translation-key
+------------------------
+
+```raku
+say L10N.info-for-translation-key("block-for");
+# - https://docs.raku.org/language/control#for
+```
+
+Returns any extra information available for a translation key, usually a URL to the Raku documentation.
+
 SCRIPTS
 =======
 

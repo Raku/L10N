@@ -17,6 +17,7 @@
   "resources": [
     "01-basic.rakutest",
     "Changes",
+    "CONTEXT.md",
     ".gitignore",
     "LICENSE",
     "L10N.rakudoc",
