@@ -7,12 +7,10 @@ L10N - support logic for all official localizations of Raku
 =head1 SYNOPSIS
 
 =begin code :lang<raku>
-
 use L10N;
 
 say L10N.localization-for-path("foo.kaas");  # NL
 say L10N.role-for-localization("NL");  # (NL)
-
 =end code
 
 =head1 DESCRIPTION
@@ -306,7 +304,7 @@ taken over by the L<L10N::Complete|https://raku.land/zef:l10n/L10N::Complete>
 distribution, which will also install this distribution.
 
 The update methods were taken from the core C<RakuAST::L10N> module,
-which will be removed in the 2025.07 release of Rakudo.
+which will be removed in the 2025.08 release of Rakudo.
 
 =head1 AUTHOR
 

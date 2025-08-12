@@ -282,7 +282,7 @@ HISTORY
 
 This distribution originally served as a meta-distribution, installing all official localizations of Raku only. This function has now been taken over by the [L10N::Complete](https://raku.land/zef:l10n/L10N::Complete) distribution, which will also install this distribution.
 
-The update methods were taken from the core `RakuAST::L10N` module, which will be removed in the 2025.07 release of Rakudo.
+The update methods were taken from the core `RakuAST::L10N` module, which will be removed in the 2025.08 release of Rakudo.
 
 AUTHOR
 ======
