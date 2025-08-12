@@ -1,6 +1,8 @@
 Revision history for L10N
 
 {{$NEXT}}
+
+0.1.5  2025-08-12T14:42:39+02:00
     - Add support for "core-invert", Daniel Mita++ for spotting
     - Add "translation-keys" and "info-for-translation-key"
       informational methods
