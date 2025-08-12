@@ -234,6 +234,7 @@ core-indent     indent
 core-index      index
 core-indices    indices
 core-indir      indir
+core-invert     invert
 core-is         is
 core-is-approx  is-approx
 core-is-deeply  is-deeply

@@ -545,6 +545,9 @@ https://docs.raku.org/type/Test#sub_bail-out
 #### core-indir
 - https://docs.raku.org/type/independent-routines#sub_indir
 
+#### core-invert
+- https://docs.raku.org/routine/invert
+
 #### core-is
 - https://docs.raku.org/type/Test#sub_is
 
