@@ -2,6 +2,10 @@ Revision history for L10N
 
 {{$NEXT}}
 
+0.1.6  2025-08-13T21:41:46+02:00
+    - Allow for alternative translations using "|"
+    - Add support for "core-antipair"
+
 0.1.5  2025-08-12T14:42:39+02:00
     - Add support for "core-invert", Daniel Mita++ for spotting
     - Add "translation-keys" and "info-for-translation-key"
