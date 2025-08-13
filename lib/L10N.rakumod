@@ -307,20 +307,22 @@ my constant %binary2localization = <
 >;
 
 my constant %extension2localization = <
-  brie    FR
-  churras PT
-  denata  PT
-  deuku   DE
-  draig   CY
-  fraku   FR
-  hunku   HU
-  itaku   IT
-  japku   JA
-  kaas    NL
-  nedku   NL
-  porku   PT
-  ryuu    JA
-  strudel DE
+  brie      FR
+  churras   PT
+  denata    PT
+  deuku     DE
+  draig     CY
+  esbelando EO
+  fraku     FR
+  hunku     HU
+  itaku     IT
+  japku     JA
+  kaas      NL
+  nedku     NL
+  porku     PT
+  ryuu      JA
+  strudel   DE
+  taoyuan   ZH
 >;
 
 my constant %localization2language = <
