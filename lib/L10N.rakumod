@@ -17,7 +17,9 @@ my sub mapify(%hash) {
 
 # Produce all words on non-commented lines of given IO as a Slip
 my sub io2words(IO::Path:D $io) {
-    $io.lines.map: { .words.Slip unless .starts-with("#") }
+    $io.lines.map: {
+        .split(/ \s+ /, 2, :skip-empty).Slip unless .starts-with("#")
+    }
 }
 
 # Create default name of executor from a language
@@ -274,28 +276,34 @@ my sub make-mapper2str(str $name, @operands) {
 # Append a given key and value to the given array if the value is different
 # from the key
 my sub accept(str $key, str $value, @array) {
-    @array.append(
-      RakuAST::StrLiteral.new($key),
-      RakuAST::StrLiteral.new($value)
-    ) if $value ne $key;
+    if $value ne $key {
+        @array.append(
+          RakuAST::StrLiteral.new($_),
+          RakuAST::StrLiteral.new($value)
+        ) for $key.split(/ \s* "|" \s* /);
+    }
 }
 
 #- CONSTANTS -------------------------------------------------------------------
-# Please keep constant definitions on alphabetical order, thank you!
+# Please keep constant definitions in alphabetical order, thank you!
 my constant %binary2localization = <
-  churras PT
-  denata  PT
-  deuku   DE
-  draig   CY
-  fraku   FR
-  hunku   HU
-  itaku   IT
-  japku   JA
-  kaas    NL
-  nedku   NL
-  porku   PT
-  ryuu    JA
-  strudel DE
+  chiku     ZH
+  churras   PT
+  denata    PT
+  deuku     DE
+  draig     CY
+  esbelando EO
+  espku     EO
+  fraku     FR
+  hunku     HU
+  itaku     IT
+  japku     JA
+  kaas      NL
+  nedku     NL
+  porku     PT
+  ryuu      JA
+  strudel   DE
+  taoyuan   ZH
 >;
 
 my constant %extension2localization = <
@@ -319,11 +327,13 @@ my constant %localization2language = <
   CY  Welsh
   DE  German
   EN  English
+  EO  Esperanto
   FR  French
   HU  Hungarian
   JA  Japanese
   NL  Dutch
   PT  Portuguese
+  ZH  Taoyuan(Chinese)
 >;
 
 my constant $extension     = 'l10n';
@@ -346,7 +356,7 @@ my constant %sub-groups = <core named>.map({ $_ => 1 });
 # The class on which only class methods can be called.  Why not export as
 # subroutines you say?  Simply, to prevent unneeded poisonin of namespaces
 
-unit class L10N is repr('Uninstantiable');
+unit class L10N:ver<0.1.6>:auth<zef:l10n> is repr('Uninstantiable');
 
 #- RUNTIME METHODS -------------------------------------------------------------
 method role-for-localization(Str:D $localization) {
@@ -700,14 +710,21 @@ method slangify($localization, %hash) is export {
 
         # Some other core feature, add a token for it
         else {
+            my @parts = $string.split(/ \s* "|" \s* /);
+            my $body := @parts > 1
+              ?? RakuAST::Regex::Alternation.new(
+                   @parts.map({RakuAST::Regex::Literal.new($_)})
+                 )
+              !! RakuAST::Regex::Sequence.new(
+                   RakuAST::Regex::Literal.new($string)
+                 );
+
             $statements.add-statement: RakuAST::Statement::Expression.new(
               expression => RakuAST::TokenDeclaration.new(
                 name => RakuAST::Name.from-identifier(
                   $name.trans('^()' => 'cpp')  # handle bad chars
                 ),
-                body => RakuAST::Regex::Sequence.new(
-                  RakuAST::Regex::Literal.new($string)
-                )
+                body => $body
               )
             );
         }
@@ -742,8 +759,10 @@ method deparsify($language, %hash) {
     my @operands = %hash.sort(-> $a, $b {
         $a.key.fc cmp $b.key.fc || $b.key cmp $a.key
     }).map: {
-        (RakuAST::StrLiteral.new(.key), RakuAST::StrLiteral.new(.value)).Slip
-          unless .key.ends-with('-' ~ .value)
+        (
+          RakuAST::StrLiteral.new(.key),
+          RakuAST::StrLiteral.new(.value.split(/ \s* "|" \s* /).head)
+        ).Slip unless .key.ends-with('-' ~ .value)
     }
 
     # Found something to lookup in at runtime
