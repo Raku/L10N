@@ -273,6 +273,9 @@ Sub/Method names that are part of the Raku core.
 #### core-all
 - https://docs.raku.org/type/Any#method_all
 
+#### core-antipair
+- https://docs.raku.org/type/Pair#method_antipair
+
 #### core-antipairs
 - https://docs.raku.org/type/Map#method_antipairs
 

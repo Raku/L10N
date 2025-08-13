@@ -136,6 +136,7 @@ constraint-where  where
 # KEY                  TRANSLATION
 core-abs               abs
 core-all               all
+core-antipair          antipair
 core-antipairs         antipairs
 core-any               any
 core-append            append
