@@ -1457,7 +1457,7 @@ Named arguments to methods/subs (:k,:p,:absolute, etc.)
 - https://docs.raku.org/type/List#routine_grep
 
 #### named-key
-- https://docs.raku.org/type/Pair#method_key
+- https://docs.raku.org/type/Pair#method_new
 
 #### named-kv
 https://docs.raku.org/type/List#routine_grep
@@ -1672,7 +1672,7 @@ https://docs.raku.org/type/List#routine_grep
 - https://docs.raku.org/type/List#routine_grep
 
 #### named-value
-- https://docs.raku.org/type/Pair#method_value
+- https://docs.raku.org/type/Pair#method_new
 
 #### named-vent-at
 - https://docs.raku.org/type/Supply#method_throttle
