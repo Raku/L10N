@@ -2,13 +2,23 @@
 The `xx/xx` files contain the translations for the localizations.
 
 Each file consists of lines, which are either a comment if they start
-with a "#" (and are thus ignored), or they consist of *two* words (as
-in: two strings, separated by whitespace)..
+with a "#" (and are thus ignored), or they consist of one word identifying 
+an entry followed by a pipe separated list of possible translations:
+
+    # this is a commented line, followed by a regular translation
+    while     dum
+    # and the next line illustrate multiple possible translations
+    until     ĝis | ghis | gxis
 
 The first word consists of a prefix, followed by a hyphen, and then the
 name of the Raku feature to be translated.
 
-The second word should be the translation in the given localization.
+The rest of the line provide translations in the given localization.
+
+>⚠️ Comments are only possible on their own line, they can not be added at
+the end of a regular line.
+
+# Example of usage and expectable effect
 
 So, e.g. in an Italian localization:
 
